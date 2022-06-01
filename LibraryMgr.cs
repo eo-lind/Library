@@ -6,18 +6,30 @@ namespace Library
 {
     public class LibraryMgr
     {
-        public string Taco { get; set; }
-        public List<Book> bookList = new List<Book>();
+        public string LibraryName { get; set; }
+        private List<Book> _books = new List<Book>();
 
-        public LibraryMgr(string taco)
+        public LibraryMgr(string libraryName)
         {
-            Taco = taco;
+            LibraryName = libraryName;
         }
 
+        public override string ToString()
+        {
+            string bookString = "";
+
+            foreach (Book book in _books)
+            {
+                bookString += $"|  {book.Title}, by {book.Author}  |  ";
+            };
+            return bookString;
+        }
+        
         public void AddBook(Book book)
         {
-            bookList.Add(book);
+            _books.Add(book);
         }
+
     }
 
 }
